@@ -1,0 +1,120 @@
+@keyframes loading{
+    from {padding-top: 1000px;}
+    to { padding-top: 0;}
+}
+
+@keyframes fading{
+    from{ opacity: 0;}
+    to { opacity: 1;}
+}
+
+
+body{
+    background-image: url(images/background2.jpg);
+    background-repeat: no-repeat;
+    background-position: relative;
+    background-size: cover;
+    color: white;
+}
+
+
+a, p, label{
+    font-family: 'Karla', serif;
+}
+
+a{
+    font-size: large;
+    text-decoration: none;
+    color:white
+}
+
+
+
+a:hover {
+    color: #171B3A;
+}
+
+
+
+.btn{
+    text-align: center;
+    display: flex;
+    margin: auto;
+    border-radius: 10px;
+    font-size: small;
+    margin-top: 30px;
+}
+
+
+img {
+    display:inline;
+}
+
+h2, h5 {
+    display: inline;
+    font-family: 'Old Standard TT', serif;
+
+}
+
+h3 {
+    text-align: center;
+    margin-top: 30px;
+    font-family: 'Old Standard TT', serif;
+}
+
+nav{
+    margin-top: 20px;
+}
+
+#title-div{
+    margin-top: 5px;
+    text-align: center;
+}
+
+
+
+#navbarNavDropdown{
+    margin-top: 10px;
+}
+
+input{
+    min-width: 100px;
+}
+
+#notIndexBody{
+    animation-name: fading;
+    animation-duration: 1s;
+    background-image: url(images/background.jpg);
+    background-repeat: no-repeat;
+    background-position: relative;
+    background-size: cover;
+}
+
+#imgContainer {
+    animation-name: loading;
+    animation-duration: 1s;
+}
+
+label {
+    color: black;
+}
+
+.valid {
+    color: green;
+}
+
+  .valid:before {
+    position: relative;
+    left: -35px;
+    
+    }
+
+  .invalid {
+    color: red;
+    }
+
+  .invalid:before {
+    position: relative;
+    left: -35px;
+    
+  }
