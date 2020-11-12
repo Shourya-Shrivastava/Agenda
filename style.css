@@ -71,8 +71,9 @@ nav{
 }
 
 input{
-    min-width: 100px;
+    min-width: 25px;
 }
+
 
 #notIndexBody{
     height: 100%;

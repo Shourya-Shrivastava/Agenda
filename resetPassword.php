@@ -46,7 +46,7 @@ if(isset($_POST['submit'])){
                     <h4>Change Password</h4>
                 </div>
             </header>
-            <div class="confirmForm" style="margin:auto">
+            <div class="confirmForm" style="margin-top: 30px; margin-bottom: 20px;" >
                 <form method="post" >   
                     <?php echo $error;?>
                     <div class="form-group">
