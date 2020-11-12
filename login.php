@@ -5,6 +5,7 @@ $password = "";
 $modalshow= "";
 $errors1 = "";
 $errors3="";
+$respMsg = "";
 $db = mysqli_connect('localhost', 'root', '', 'agenda')  or die("Could not connect to the database");
 
 if (isset($_POST['signup'])){
@@ -44,7 +45,7 @@ if (isset($_POST['signup'])){
     
     if($errors1 == ""){
         $password = md5($password_1);
-        $table_name = $firstName.'_'.$lastName;
+        $table_name = strtolower($firstName).'_'.strtolower($lastName);
         $query = "INSERT INTO user (firstName, lastName, email, passwd, table_name)
                 VALUES ('$firstName', '$lastName', '$email', '$password', '$table_name')";
         mysqli_query($db, $query);
@@ -123,6 +124,12 @@ if (isset($_POST['login'])) {
     }
     echo mysqli_error($db);
   }
+  if(isset($_GET['msg'])){
+      $msg = $_GET['msg'];
+      $respMsg .="<div class='alert alert-success'>".$msg."</div>";
+
+  }
+
 ?>
 
 <!DOCTYPE html>
@@ -171,7 +178,8 @@ if (isset($_POST['login'])) {
     <div id="" class="container" style="margin-top: 30px; margin-bottom: 20px;">
         <div class="row">
             <div class="col-xl-6 col-lg-7 col-md-8" style="margin: auto;">
-                <?php echo($errors2); ?>
+                <?php echo($errors2);
+                echo($respMsg); ?>
                 <form method="post">
                     <div class="form-group">
                         <input type="email" name="loginemail" class="form-control" id="exampleInputEmail1" placeholder="Enter email" auofocus required>
@@ -182,7 +190,14 @@ if (isset($_POST['login'])) {
                     <button type="submit" name="login" class="btn">Log In</button>
                 </form>
                 <hr style="border: 0.5px white solid">
-                <a href="#" data-toggle="modal" data-target="#ModalCenter">Create an Account</a>
+                <div class="row">
+                    <div class="col">
+                        <a href="#" data-toggle="modal" data-target="#ModalCenter">Create an Account</a>
+                    </div>
+                    <div class="col">
+                        <a id="forgotPassword" href="recoverEmail.php" style="float: right">Forgot Password?</a>
+                    </div>
+                </div>
                 <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
@@ -209,8 +224,10 @@ if (isset($_POST['login'])) {
                                 <div class="form-group">
                                     <input type="email" class="form-control" id="exampleInputEmail" placeholder="Email Id" name="email"  required>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" >
                                     <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" name="pass1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                                    <label style="margin-margin: 0" for="showPass"><input type="checkbox" id="showPass" onclick="myFunction()" />Show Password</label>
+                                    
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control" id="exampleConfirmInputPassword" placeholder="Confirm Password" name="pass2"  required>
@@ -250,25 +267,24 @@ if (isset($_POST['login'])) {
         </div>
     </footer>
 
-
-
-
-
-
-
-
-
-
-
-
+    
 
 
 
 
     <?php echo($modalshow); ?>
+
     
     <script type="text/javascript">
 
+        function myFunction() {
+            var x = document.getElementById("exampleInputPassword");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
         if (window.history.replaceState) {
              window.history.replaceState(null, null, window.location.href);
         } 

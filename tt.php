@@ -7,7 +7,7 @@ if(!isset($_SESSION['email'])){
     header('Location: login.php?error='.$error3);
     exit;
 } else {
-    $db = mysqli_connect('localhost', 'root', '', 'agenda')  or die("Could not connect to the database");
+$db = mysqli_connect('localhost', 'root', '', 'agenda')  or die("Could not connect to the database");
 
     $tableName = $_SESSION['tableName'];
 
@@ -137,8 +137,8 @@ if(!isset($_SESSION['email'])){
                                 Hi, <?php echo($_SESSION['firstName']); ?>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="nav-link" href="editProfile.php" style="color: black">Profile</a>
-                                    <a class="nav-link" href="logout.php" style="color: black">Log Out</a>
+                                    <a class="nav-link" href="editProfile.php" style="color: black"><img src="https://img.icons8.com/ios/21/000000/gender-neutral-user.png" style="padding-right: 10px"/>Profile</a>
+                                    <a class="nav-link" href="logout.php" style="color: black"><img src="https://img.icons8.com/ios/18/000000/export.png" style="padding-right: 10px">Log Out</a>
                                 </div>
                             </li>
                             <li class="nav-item">

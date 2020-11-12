@@ -56,8 +56,8 @@ session_start();
                                 Hi, <?php echo($_SESSION['firstName']); ?>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="nav-link" href="editProfile.php" style="color: black">Profile</a>
-                                    <a class="nav-link" href="logout.php" style="color: black">Log Out</a>
+                                <a class="nav-link" href="editProfile.php" style="color: black"><img src="https://img.icons8.com/ios/21/000000/gender-neutral-user.png" style="padding-right: 10px"/>Profile</a>
+                                    <a class="nav-link" href="logout.php" style="color: black"><img src="https://img.icons8.com/ios/18/000000/export.png" style="padding-right: 10px">Log Out</a>
                                 </div>
                             </li>
                             <li class="nav-item">
@@ -80,9 +80,9 @@ session_start();
                 <h3 class="display-4">Welcome To Agenda</h3> 
                 <h6 style="padding-top: 20px; font-size: 20px">A secret of getting ahead is just getting started!</h6>
                 <?php if( isset($_SESSION['email'])): ?>
-                    <button class="btn"><a class="light" href="tt.php">Schedule Now</a></button>
+                    <button class="btn"><a class="light" href="tt.php" id="indexButton">Schedule Now</a></button>
                 <?php else: ?>
-                    <button onClick="location.href='login.php';" class="btn">Get Started</button>
+                    <button onClick="location.href='login.php';" class="btn" >Get Started</button>
                 <?php endif; ?>
                 
             </div>
@@ -153,10 +153,10 @@ session_start();
 
 
     <script type="text/javascript">
-        $("#knowmore").on('click', function() {
+        $("#knowmore").click(function() {
             $('html,body').animate({
                 scrollTop: $("#about").offset().top},
-                'slow');
+                'fast');
         });
     </script>
 

@@ -103,8 +103,8 @@ if(isset($_POST['deleteProfile'])){
                                 Hi, <?php echo($_SESSION['firstName']); ?>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="nav-link" href="editProfile.php" style="color: black">Profile</a>
-                                    <a class="nav-link" href="logout.php" style="color: black">Log Out</a>
+                                <a class="nav-link" href="editProfile.php" style="color: black"><img src="https://img.icons8.com/ios/21/000000/gender-neutral-user.png" style="padding-right: 10px"/>Profile</a>
+                                <a class="nav-link" href="logout.php" style="color: black"><img src="https://img.icons8.com/ios/18/000000/export.png" style="padding-right: 10px">Log Out</a>
                                 </div>
                             </li>
                 

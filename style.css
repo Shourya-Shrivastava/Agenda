@@ -8,15 +8,14 @@
     to { opacity: 1;}
 }
 
-
 body{
-    background-image: url(images/background2.jpg);
+    height: 200vh;
+    background-image: url(images/background.jpg);
     background-repeat: no-repeat;
     background-position: relative;
     background-size: cover;
     color: white;
 }
-
 
 a, p, label{
     font-family: 'Karla', serif;
@@ -28,13 +27,11 @@ a{
     color:white
 }
 
-
-
-a:hover {
-    color: #171B3A;
+.nav-link:hover {
+    color: black;
+    background-color: white;
+    border-radius: 50px;
 }
-
-
 
 .btn{
     text-align: center;
@@ -42,9 +39,8 @@ a:hover {
     margin: auto;
     border-radius: 10px;
     font-size: small;
-    margin-top: 30px;
+    margin-top: 20px;
 }
-
 
 img {
     display:inline;
@@ -53,7 +49,6 @@ img {
 h2, h5 {
     display: inline;
     font-family: 'Old Standard TT', serif;
-
 }
 
 h3 {
@@ -71,8 +66,6 @@ nav{
     text-align: center;
 }
 
-
-
 #navbarNavDropdown{
     margin-top: 10px;
 }
@@ -82,11 +75,11 @@ input{
 }
 
 #notIndexBody{
+    height: 100%;
     animation-name: fading;
     animation-duration: 1s;
-    background-image: url(images/background.jpg);
+    background-image: url("images/background.jpg");
     background-repeat: no-repeat;
-    background-position: relative;
     background-size: cover;
 }
 
@@ -118,3 +111,49 @@ label {
     left: -35px;
     
   }
+
+  #confirmInput{
+      width: 50%;
+  }
+
+
+    .popoverTitleCalendar{
+        width: 100%;
+        height: 100%;
+        padding: 15px 15px;
+        font-family: Roboto;
+        font-size: 13px;
+        border-radius: 5px 5px 0 0;
+    }
+    .popoverInfoCalendar i{
+        font-size: 14px;
+        margin-right: 10px;
+        line-height: inherit;
+        color: #d3d4da;
+    }
+    .popoverInfoCalendar p{
+        margin-bottom: 1px;
+    }
+    .popoverDescCalendar{
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid #E3E3E3;
+        overflow: hidden;
+    }
+    .popover-title {
+        background: transparent;
+        font-weight: 600;
+        padding: 0 !important;
+        border: none;
+    }
+    .popover-content {
+        padding: 15px 15px;
+        font-family: Roboto;
+        font-size: 13px;
+    }
+
+    #indexButton{
+        text-decoration: none;
+        color: black;
+        font-size: 15px;
+    }

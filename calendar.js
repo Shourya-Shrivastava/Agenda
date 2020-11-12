@@ -50,6 +50,7 @@ $(document).ready(function() {
     var calendar = $('#calendar').fullCalendar({
         height: 750,
         editable:true,
+        allDayDefault:false,
         selectable:true,
         selectHelper:true,
         eventLimit: true,
@@ -58,9 +59,7 @@ $(document).ready(function() {
         nowIndicator: true,
         displayEventEnd: true,
         defaultView: window.mobilecheck() ? "listMonth" : "month"   ,
-
-        dayPopoverFormat:{ month: 'long', day: 'numeric', year: 'numeric' }
-        ,
+        timeFormat: 'H(:mm)',
         header: {
             left: ' title',
             center: 'month, agendaWeek, agendaDay, listMonth',
@@ -76,25 +75,53 @@ $(document).ready(function() {
         showNonCurrentDates: false,
         fixedWeekCount: false,
         longPressDelay: 100,
+        
         events: 'calendar/load.php',
 
-        eventRender: function eventRender( event ) {
+        eventRender: function eventRender( event, element, view) {
             if($('#calendar_filter').val() === "All"){
                 return ['All', event.calendar].indexOf($('#calendar_filter').val()) >= 0;
             }else{
                 return ['All', event.calendar].indexOf($('#calendar_filter').val()) >= 0 &&
                 ['All', event.group].indexOf($('#group_filter').val()) >= 0;
             }
+            
+            
+        },
+
+        eventAfterRender: function eventRender( event, element) {
+            
+            element.popover({
+                content:  '<div class="popoverTitleCalendar" style="background-color:'+ event.backgroundColor +'; text-align: center; color: white; margin-bottom: 5px">'+ event.title +'</div>' +
+                        '<hr style="height:2px; width:100%;color:white;background-color:white">' +
+                        '<div class="popoverInfoCalendar">' +
+                          '<p><strong>Calendar:</strong> ' + event.calendar + '</p>' +
+                          '<p><strong>Group:</strong> ' + event.group + '</p>' +
+                          '<p><strong>Event Start:</strong> ' + moment(event.start).format('ddd, D MMM hh:mm A') + '</p>' +
+                          '<p><strong>Event End:</strong> ' + moment(event.end).format('ddd, D MMM hh:mm A') + '</p>' +
+                          '<div class="popoverDescCalendar"><strong>Description:</strong> '+ event.descs +'</div>' +
+                          '</div>',
+                delay: { 
+                   show: "100", 
+                   hide: "50"
+                },
+                trigger: 'hover',
+                placement: 'top',
+                html: true,
+                container: 'body'
+              });
+            
         },
         
         select: function(start, end, allDay){
 
-            console.log("Event Start date: " + moment(start).format('DD-MM-Y'),
-                "Event End date: " + moment(end).subtract(1, "days").format('DD-MM-YYYYTHH:mm:ss'),
+            console.log("Event Start date: " + moment(start).format('DD-MM-YYYY HH:mm:ss'),
+                "Event End date: " + moment(end).subtract(1, "days").format('DD-MM-YYYY HH:mm:ss'),
                 "AllDay: " + allDay);
-
-            $('#exampleModalCenter').modal('show');
             
+            $('#exampleModalCenter').modal('show');
+            $('#fromTime').val(moment(start).format('DD-MM-YYYY HH:mm:ss'));
+            $('#toTime').val(moment(end).format('DD-MM-YYYY HH:mm:ss'));
             $('#addForm').on('submit', function(e){
                 e.preventDefault();
                 var title = $('#ttTitle').val();
@@ -118,12 +145,7 @@ $(document).ready(function() {
                             $("#addForm").trigger("reset");
                         });
                         console.log(ttCalendar);
-                        // $('#calendar_filter').append(`<option id="${ttCalendar}" value="${ttCalendar}"> 
-                        //         ${ttCalendar} 
-                        //           </option>`); 
-                        // $('#group_filter').append(`<option id="${group}" value="${group}"> 
-                        //         ${group} 
-                        //      </option>`);
+                        
                         calendar.fullCalendar('refetchEvents');
                     }
                 });
