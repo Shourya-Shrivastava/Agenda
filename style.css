@@ -74,9 +74,8 @@ input{
     min-width: 25px;
 }
 
-
 #notIndexBody{
-    height: 100%;
+    height: 100vh;
     animation-name: fading;
     animation-duration: 1s;
     background-image: url("images/background.jpg");
@@ -114,7 +113,7 @@ label {
   }
 
   #confirmInput{
-      width: 50%;
+      width: 100%;
   }
 
 
